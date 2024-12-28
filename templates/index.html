@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubuntu Web App Dashboard</title>
+    <!-- Include Vanilla CSS via CDN -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vanilla-framework-version-4.18.5.min.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        canvas {
+            width: 100% !important;  /* Make the canvas take up the full width of the parent column */
+            height: 275px !important; /* Set a specific height for the charts */
+        }
+
+        .row {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body  class="is-light">
+<!-- Header -->
+<header id="navigation" class="p-navigation is-dark">
+    <div class="p-navigation__row--25-75">
+        <div class="p-navigation__banner">
+            <img class="p-navigation__logo-icon" src="{{ url_for('static', filename='images/image22.png') }}" style="height: 50px; margin-top: 5px; margin-bottom: 5px" alt="">
+            <div class="p-navigation__tagged-logo">
+                <span class="p-navigation__logo-title" style="margin-top: 17px; margin-left: -25px;">Accelerate</span>
+            </div>
+        </div>
+        <nav class="p-navigation__nav" aria-label="Example main">
+            <ul class="p-navigation__items">
+                <li class="p-navigation__item is-selected">
+                    <a class="p-navigation__link" href="#">Collector</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+</br>
+<!-- Main Dashboard Content -->
+<div class="row">
+    <div class="col-4">
+        <!-- Hourly Info Box -->
+        <div class="p-card" id="hourly-info-box" style="background:#0e842033; border: 1px solid #0e8420">
+            <h3>Hourly Events</h3>
+            <p class="p-card__content" id="peak-hour"></p>
+            <p class="p-card__content" id="low-hour"></p>
+        </div>
+    </div>
+    <div class="col-4">
+        <!-- Daily Info Box -->
+        <div class="p-card" id="daily-info-box" style="background:#f99b1133; border: 1px solid #f99b11">
+            <h3>Daily Events</h3>
+            <p class="p-card__content" id="peak-day"></p>
+            <p class="p-card__content" id="low-day"></p>
+        </div>
+    </div>
+    <div class="col-4">
+        <!-- Weekly Info Box -->
+        <div class="p-card" id="weekly-info-box" style="background: #c7162b33; border: 1px solid #c7162b">
+            <h3>Weekly Events</h3>
+            <p class="p-card__content" id="peak-week"></p>
+            <p class="p-card__content" id="low-week"></p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Charts -->
+    <div class="col-6">
+        <canvas id="hourlyChart"></canvas>
+    </div>
+    <div class="col-6">
+        <canvas id="dailyChart"></canvas>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <canvas id="weeklyChart"></canvas>
+    </div>
+</div>
+
+<!-- Chart.js Initialization and Data -->
+<script src="{{ url_for('static', filename='js/generate_chart.js') }}"></script>
+</body>
+</html>
