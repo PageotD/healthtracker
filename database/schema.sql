@@ -2,7 +2,7 @@
 CREATE TABLE "user" (
     uuid TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
     user_id VARCHAR(50) UNIQUE NOT NULL,
-    first_name VARCHAR(100) NOT NULL
+    user_name VARCHAR(100) NOT NULL
 );
 
 -- Create WEIGHT table

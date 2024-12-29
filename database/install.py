@@ -32,7 +32,7 @@ def create_database(schema_file: str, db_file: str):
 
 # Define paths for schema and database
 schema_path = "schema.sql"  # Replace with the path to your schema file
-database_path = "healthtracker.db"    # Replace with your desired database file path
+database_path = "../healthtracker.db"    # Replace with your desired database file path
 
 # Create the database
 create_database(schema_path, database_path)

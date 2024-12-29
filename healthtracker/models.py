@@ -3,7 +3,7 @@ from pydantic import BaseModel
 class User(BaseModel):
     uuid: str
     user_id: str
-    first_name: str
+    user_name: str
 
 class Weight(BaseModel):
     uuid: str
