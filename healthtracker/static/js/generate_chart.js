@@ -93,7 +93,7 @@ function add_sleep_data() {
             .then(response => {
                 if (response.ok) {
                     console.log('Sleep data added successfully');
-                    plot_weight_chart(); // Refresh the chart after adding data
+                    plot_sleep_chart(); // Refresh the chart after adding data
                 } else {
                     console.error('Error adding sleep data:', response.statusText);
                 }
@@ -121,7 +121,7 @@ function add_activity_data() {
             .then(response => {
                 if (response.ok) {
                     console.log('Activity data added successfully');
-                    plot_weight_chart(); // Refresh the chart after adding data
+                    plot_activity_chart(); // Refresh the chart after adding data
                 } else {
                     console.error('Error adding activity data:', response.statusText);
                 }
