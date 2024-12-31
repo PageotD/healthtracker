@@ -14,6 +14,15 @@ CREATE TABLE weight (
     FOREIGN KEY (user_id) REFERENCES "user"(uuid)
 );
 
+-- Create CALORIES table
+CREATE TABLE calories (
+    uuid TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
+    user_id TEXT NOT NULL,
+    measurement_datetime TIMESTAMP NOT NULL,
+    calories_value DECIMAL(5,2) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES "user"(uuid)
+);
+
 -- Create SLEEP table
 CREATE TABLE sleep (
     uuid TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
