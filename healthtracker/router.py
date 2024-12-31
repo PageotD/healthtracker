@@ -1,5 +1,5 @@
 from flask import render_template, jsonify, request
-from .services import get_user_id, create_user, retrieve_weight_data, retrieve_sleep_data, add_weight_data, add_sleep_data, add_activity_data, retrieve_activity_data
+from .services import get_user_id, create_user, retrieve_weight_data, retrieve_sleep_data, add_weight_data, add_sleep_data, add_activity_data, retrieve_activity_data, add_calories_data, retrieve_calories_data
 
 
 def register_routes(app):
@@ -51,7 +51,7 @@ def register_routes(app):
         data = request.json
         date = data['measurement_datetime']
         calories_value = data['calories_value']
-        add_weight_data(user_id, date, calories_value)
+        add_calories_data(user_id, date, calories_value)
         return jsonify({"message": f"Post calories data for {user_id}", "data": data})
 
     @app.route('/sleep/<user_id>', methods=['GET'])

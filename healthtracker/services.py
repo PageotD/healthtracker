@@ -92,7 +92,7 @@ def retrieve_calories_data(user_id: str) -> list:
     # Construire la liste finale avec toutes les dates, même celles absentes
     chart_data = {
         "date": [],
-        "weight": []
+        "calories": []
     }
     for date in date_range:
         date_only = date.date()

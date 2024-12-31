@@ -1,12 +1,12 @@
 -- Create USER table
-CREATE TABLE "user" (
+CREATE TABLE IF NOT EXISTS "user" (
     uuid TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
     user_id VARCHAR(50) UNIQUE NOT NULL,
     user_name VARCHAR(100) NOT NULL
 );
 
 -- Create WEIGHT table
-CREATE TABLE weight (
+CREATE TABLE IF NOT EXISTS weight (
     uuid TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
     user_id TEXT NOT NULL,
     measurement_datetime TIMESTAMP NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE weight (
 );
 
 -- Create CALORIES table
-CREATE TABLE calories (
+CREATE TABLE IF NOT EXISTS calories (
     uuid TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
     user_id TEXT NOT NULL,
     measurement_datetime TIMESTAMP NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE calories (
 );
 
 -- Create SLEEP table
-CREATE TABLE sleep (
+CREATE TABLE IF NOT EXISTS  sleep (
     uuid TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
     user_id TEXT NOT NULL,
     start_datetime TIMESTAMP NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE sleep (
 );
 
 -- Create ACTIVITY table
-CREATE TABLE activity (
+CREATE TABLE IF NOT EXISTS  activity (
     uuid TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
     user_id TEXT NOT NULL,
     start_datetime TIMESTAMP NOT NULL,
@@ -44,6 +44,7 @@ CREATE TABLE activity (
 );
 
 -- Create indexes for better query performance
-CREATE INDEX idx_weight_user_datetime ON weight(user_id, measurement_datetime);
-CREATE INDEX idx_sleep_user_datetime ON sleep(user_id, start_datetime);
-CREATE INDEX idx_activity_user_datetime ON activity(user_id, start_datetime);
+CREATE INDEX IF NOT EXISTS  idx_weight_user_datetime ON weight(user_id, measurement_datetime);
+CREATE INDEX IF NOT EXISTS  idx_calories_user_datetime ON calories(user_id, measurement_datetime);
+CREATE INDEX IF NOT EXISTS  idx_sleep_user_datetime ON sleep(user_id, start_datetime);
+CREATE INDEX IF NOT EXISTS  idx_activity_user_datetime ON activity(user_id, start_datetime);
